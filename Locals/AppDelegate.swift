@@ -11,7 +11,11 @@ import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    let placesUpdatedNotificationKey = "placesUpdated";
 
+    var places: Array<YelpBusiness> = [];
+    
     var window: UIWindow?
     var locationManager: CLLocationManager?
 

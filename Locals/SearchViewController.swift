@@ -8,14 +8,21 @@
 
 import Foundation
 
-class SearchViewController: UIViewController, UITextFieldDelegate {
+class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate {
 
     @IBOutlet weak var searchField: UITextField!
+    @IBOutlet weak var centerYAlignment: NSLayoutConstraint!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
     var yelpClient: YelpClient!
+    var places: Array<YelpBusiness> = Array()
+    var hasSearched: Bool = false;
+    
+    var dataToPass: AnyObject?
+    
+    var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate;
 
     override func viewDidLoad() {
         
@@ -26,31 +33,56 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     func searchFieldDidChange(textField: UITextField) {
-        if (textField.text != "") {
-            searchYelp(textField.text, location: "Göteborg");
-        }
+
+        searchYelp(textField.text, location: "Göteborg");
     }
     
     func searchYelp(term: String, location: String) {
         
         loadingIndicator.startAnimating();
-//        overlay.alpha = 0.8
         
         yelpClient.searchWithTerm(term, location: location, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            let results = (response["businesses"] as! Array).map({
+            self.places = (response["businesses"] as! Array).map({
                 (business: NSDictionary) -> YelpBusiness in
                 return YelpBusiness(dictionary: business)
             })
+            self.tableView.reloadData();
             self.loadingIndicator.stopAnimating();
-            UIView.animateWithDuration(0.5, animations: {
-                self.imageView.alpha = 0
-                self.searchField.frame.origin.y = 70
-            });
-            
+            if (!self.hasSearched) {
+                UIView.animateWithDuration(0.5, animations: {
+                    self.imageView.alpha = 0
+                    self.searchField.setTranslatesAutoresizingMaskIntoConstraints(true)
+                    self.searchField.frame.origin.y = 70
+                });
+                self.hasSearched = true;
+            }
+
             println(response)
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println(error)
         }
+    }
+    
+    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
+    {
+        return self.places.count;
+    }
+    
+    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
+    {
+        let cell: CustomCell = CustomCell(style:UITableViewCellStyle.Value1, reuseIdentifier:"cell")
+        cell.textLabel?.text = self.places[indexPath.row].name
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var business = self.places[indexPath.row];
+        
+        appDelegate.places.append(business);
+        NSNotificationCenter.defaultCenter().postNotificationName(appDelegate.placesUpdatedNotificationKey, object: self);
+        
+        self.dismissViewControllerAnimated(true, completion: {});
     }
     
 }

@@ -26,8 +26,8 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     var screenWidth: CGFloat = 1;
     var screenHeigth: CGFloat = 1;
     
+    var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate;
     
-    let places = ["Cigarren","Dirty Records","Hagabion"];
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -40,6 +40,8 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         mapView.showsUserLocation = true
         
         addButtonImageView.userInteractionEnabled = true;
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateRoute", name: appDelegate.placesUpdatedNotificationKey, object: nil)
 
         //createAddDialogue();
     }
@@ -53,6 +55,14 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
 //        mapView.setRegion(region, animated: true)
         
         
+    }
+    
+    
+    func updateRoute() {
+        println("updateRoute");
+        tableView.reloadData();
+        
+        mapView
     }
     
     @IBAction func tapDetected(sender: UITapGestureRecognizer) {
@@ -71,15 +81,14 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
-        var count = self.places.count
-        return self.places.count;
+        return appDelegate.places.count;
     }
     
     func tableView(tableView: UITableView!,
         cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
         let cell:CustomCell = CustomCell(style:UITableViewCellStyle.Value1, reuseIdentifier:"cell")
-        cell.textLabel?.text = self.places[indexPath.row]
+        cell.textLabel?.text = appDelegate.places[indexPath.row].name
         
         return cell
     }
