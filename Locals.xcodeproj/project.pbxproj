@@ -17,6 +17,7 @@
 		639261E41AC92EDB004278E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639261E31AC92EDB004278E1 /* Images.xcassets */; };
 		639261E71AC92EDB004278E1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639261E51AC92EDB004278E1 /* LaunchScreen.xib */; };
 		639261F31AC92EDB004278E1 /* LocalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639261F21AC92EDB004278E1 /* LocalsTests.swift */; };
+		639BF6AE1AE4541200D56D32 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 639BF6AD1AE4541200D56D32 /* background.png */; };
 		63DF52C01AE23D8C00DCB89F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF52BF1AE23D8C00DCB89F /* User.swift */; };
 		63DF52C21AE23E1400DCB89F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF52C11AE23E1400DCB89F /* Config.swift */; };
 		63DF52C81AE24F0000DCB89F /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF52C61AE24F0000DCB89F /* YelpClient.swift */; };
@@ -53,6 +54,7 @@
 		639261EC1AC92EDB004278E1 /* LocalsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		639261F11AC92EDB004278E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		639261F21AC92EDB004278E1 /* LocalsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalsTests.swift; sourceTree = "<group>"; };
+		639BF6AD1AE4541200D56D32 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		63DF52BF1AE23D8C00DCB89F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		63DF52C11AE23E1400DCB89F /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		63DF52C61AE24F0000DCB89F /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		636A9CF41AE129260063968C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				639BF6AD1AE4541200D56D32 /* background.png */,
 				63DF52D01AE3904F00DCB89F /* findplace.png */,
 				63DF52C91AE24F4200DCB89F /* mapmarker.png */,
 				63DF52CA1AE24F4200DCB89F /* add139.png */,
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63DF52CB1AE24F4200DCB89F /* mapmarker.png in Resources */,
+				639BF6AE1AE4541200D56D32 /* background.png in Resources */,
 				63DF52CC1AE24F4200DCB89F /* add139.png in Resources */,
 				639261E21AC92EDB004278E1 /* Main.storyboard in Resources */,
 				639261E71AC92EDB004278E1 /* LaunchScreen.xib in Resources */,

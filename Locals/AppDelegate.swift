@@ -13,6 +13,7 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let placesUpdatedNotificationKey = "placesUpdated";
+    let imageDownloadedNtificationKey = "imageDownloaded";
 
     var places: Array<YelpBusiness> = [];
     

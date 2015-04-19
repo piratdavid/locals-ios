@@ -30,6 +30,8 @@ class YelpBusiness {
             return nil
         }
     }
+    
+    var image: UIImage?
 
     var ratingImageURL: NSURL {
         get {
