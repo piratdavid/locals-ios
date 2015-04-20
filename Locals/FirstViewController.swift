@@ -19,7 +19,8 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButtonImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     var navCont: UINavigationController!;
     var addDialogue: UIView!;
 //    var overlay: UIView!;
@@ -61,6 +62,11 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
 //        let region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, 2000, 2000)
 //        mapView.setRegion(region, animated: true)
     }
+    
+    @IBAction func saveButtonTapped(sender: AnyObject) {
+        println("hej")
+    }
+    
     
     func updateItinerary() {
 //        updateRoute();
@@ -127,15 +133,6 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         activityIndicator.stopAnimating()
     }
     
-    @IBAction func tapDetected(sender: UITapGestureRecognizer) {
-        println("hej")
-        
-//        UIView.animateWithDuration(0.2, animations: {
-//                self.addDialogue.frame = CGRectMake(0, 200, self.screenWidth, self.screenHeigth-200);
-//            }
-//        )
-    }
-    
     func mapView(mapView: MKMapView!, rendererForOverlay
         overlay: MKOverlay!) -> MKOverlayRenderer! {
             let renderer = MKPolylineRenderer(overlay: overlay)
@@ -175,6 +172,7 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
             completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
                 if error == nil {
                     cell.imageView?.image = UIImage(data: data)
+//                    cell.imageView?.frame = CGRect(origin: CGPointZero, size: CGSize(width: 20.0, height: 20.0));
                     cell.setNeedsLayout()
                 }
         })

@@ -5,6 +5,9 @@
 //  Created by Timothy Lee on 9/19/14.
 //  Copyright (c) 2014 Timothy Lee. All rights reserved.
 //
+//  Edited by David Smallbone Tizard on 4/19/15.
+//  Copyright (c) 2015 David Smallbone Tizard. All rights reserved.
+//
 
 import UIKit
 
@@ -30,6 +33,11 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
         var parameters = ["term": term, "location": location, "limit": 3]
         return self.GET("search", parameters: parameters, success: success, failure: failure)
+    }
+    
+    func getBusiness(id: String, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
+        var path = "business/" + id
+        return self.GET(path, parameters: [], success: success, failure: failure)
     }
     
 }

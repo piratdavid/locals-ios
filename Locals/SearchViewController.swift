@@ -63,6 +63,15 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         }
     }
     
+    func getBusinessFromYelp(id: String) {
+        
+        yelpClient.getBusiness(id, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                println(response)
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
+        }
+    }
+    
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
         return self.places.count;

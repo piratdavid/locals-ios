@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--List spots-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="Locals" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,7 +50,6 @@
                                     <rect key="frame" x="0.0" y="139" width="600" height="200"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
-                                        <outletCollection property="gestureRecognizers" destination="qPt-EH-jxg" appends="YES" id="dDZ-0H-YUn"/>
                                         <outletCollection property="gestureRecognizers" destination="yfZ-9T-bLc" appends="YES" id="7xH-4i-Mss"/>
                                     </connections>
                                 </imageView>
@@ -67,8 +66,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Dy-HS-mHJ">
-                                                    <rect key="frame" x="485" y="8" width="100" height="100"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Dy-HS-mHJ">
+                                                    <rect key="frame" x="528" y="44" width="57" height="57"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -98,7 +97,13 @@
                             <constraint firstItem="q3g-kY-AbL" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="zPN-HX-qha"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" title="List spots" id="ujQ-Kb-39c">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="9jW-BI-W0r">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="9pv-A4-QxB" id="YSf-Tk-Wb2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="iyG-uA-TZi" id="hKp-3n-umr"/>
                         <outlet property="addButtonImageView" destination="VV5-Fj-khx" id="Bus-pF-BdY"/>
@@ -107,18 +112,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="qPt-EH-jxg">
-                    <connections>
-                        <action selector="tapDetected:" destination="9pv-A4-QxB" id="R4j-Jf-AEQ"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="yfZ-9T-bLc" userLabel="Move to search window Tap Gesture Recognizer">
                     <connections>
                         <segue destination="lEe-bJ-2WM" kind="presentation" id="aM5-TL-Uf1"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="712" y="-360"/>
+            <point key="canvasLocation" x="1524" y="-360"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dp1-vJ-go1">
@@ -134,7 +134,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3Q-NH-RKG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="-349"/>
+            <point key="canvasLocation" x="2305" y="-349"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="YaS-vW-17u">
@@ -209,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZ4-Os-e0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2221" y="-303"/>
+            <point key="canvasLocation" x="3033" y="-303"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="Vuq-rS-NlM">
@@ -217,7 +217,7 @@
                 <tableViewController id="7mb-Oq-qCU" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBW-VV-NpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2891" y="-278"/>
+            <point key="canvasLocation" x="3703" y="-278"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -270,13 +270,32 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="ayu-UV-VGe" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--First-->
+        <scene sceneID="hZK-5b-Wah">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ayu-UV-VGe" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cun-bB-YiW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="RXq-cy-qG8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eYl-f2-IGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="712" y="-360"/>
         </scene>
     </scenes>
     <resources>
